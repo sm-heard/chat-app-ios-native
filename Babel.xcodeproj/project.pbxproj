@@ -18,9 +18,12 @@
 		A6F0C9172C1F7D8400AFCB1D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6F0C9312C1F7E5B00AFCB1D /* Preview Assets.xcassets */; };
 		A6F0C9182C1F80B000AFCB1D /* StreamChatSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = A6F0C9412C1F806300AFCB1D /* StreamChatSwiftUI */; };
 		A6F0C9192C1F80B000AFCB1D /* StreamChat in Frameworks */ = {isa = PBXBuildFile; productRef = A6F0C9422C1F806300AFCB1D /* StreamChat */; };
+		A6F0C9482C1F91BB00AFCB1D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F0C9472C1F91BB00AFCB1D /* ProfileView.swift */; };
+		A6F0C9492C1F91BB00AFCB1D /* ChannelCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F0C9462C1F91BB00AFCB1D /* ChannelCreationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7063F15B2EAB404600AB64D1 /* Babel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Babel.entitlements; sourceTree = "<group>"; };
 		A6F0C9052C1F7D6D00AFCB1D /* Babel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Babel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F0C9202C1F7E1000AFCB1D /* BabelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabelApp.swift; sourceTree = "<group>"; };
 		A6F0C9212C1F7E1000AFCB1D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -31,6 +34,8 @@
 		A6F0C9302C1F7E5B00AFCB1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6F0C9312C1F7E5B00AFCB1D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A6F0C9322C1F7E8A00AFCB1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6F0C9462C1F91BB00AFCB1D /* ChannelCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationView.swift; sourceTree = "<group>"; };
+		A6F0C9472C1F91BB00AFCB1D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +63,8 @@
 		A6F0C9022C1F7D6D00AFCB1D /* Babel */ = {
 			isa = PBXGroup;
 			children = (
+				7063F15B2EAB404600AB64D1 /* Babel.entitlements */,
+				A6F0C94A2C1F91E700AFCB1D /* Views */,
 				A6F0C9202C1F7E1000AFCB1D /* BabelApp.swift */,
 				A6F0C9212C1F7E1000AFCB1D /* ContentView.swift */,
 				A6F0C9222C1F7E1000AFCB1D /* AppViewModel.swift */,
@@ -77,6 +84,15 @@
 				A6F0C9242C1F7E1000AFCB1D /* KeychainService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		A6F0C94A2C1F91E700AFCB1D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A6F0C9462C1F91BB00AFCB1D /* ChannelCreationView.swift */,
+				A6F0C9472C1F91BB00AFCB1D /* ProfileView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		A6F0C9042C1F7D6D00AFCB1D /* Networking */ = {
@@ -192,8 +208,10 @@
 			files = (
 				A6F0C9122C1F7D8400AFCB1D /* AppViewModel.swift in Sources */,
 				A6F0C9112C1F7D8400AFCB1D /* ContentView.swift in Sources */,
+				A6F0C9492C1F91BB00AFCB1D /* ChannelCreationView.swift in Sources */,
 				A6F0C9102C1F7D8400AFCB1D /* BabelApp.swift in Sources */,
 				A6F0C9152C1F7D8400AFCB1D /* AppConfig.swift in Sources */,
+				A6F0C9482C1F91BB00AFCB1D /* ProfileView.swift in Sources */,
 				A6F0C9132C1F7D8400AFCB1D /* TokenService.swift in Sources */,
 				A6F0C9142C1F7D8400AFCB1D /* KeychainService.swift in Sources */,
 			);
@@ -314,6 +332,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Babel/Babel.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Babel/Preview Content\"";
 				DEVELOPMENT_TEAM = 26G23KHKL5;
@@ -345,6 +364,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Babel/Babel.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Babel/Preview Content\"";
 				DEVELOPMENT_TEAM = 26G23KHKL5;
