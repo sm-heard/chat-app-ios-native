@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+*.pem
+
+# Xcode
+DerivedData/
+*.xcuserstate
+*.xcworkspace/xcuserdata
+*.xcodeproj/project.xcworkspace/
+*.xcodeproj/xcuserdata/
+
+# Swift Package Manager
+.swiftpm/
+Package.resolved
+
+# Node / Vercel
+node_modules/
+.vercel/
+dist/
+
+.env

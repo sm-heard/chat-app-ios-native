@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "stream-chat": "^9.25.0",
+    "ts-node": "^10.9.2"
+  },
+  "name": "chat-app-ios-native",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/node": "^24.9.1",
+    "typescript": "^5.9.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sm-heard/chat-app-ios-native.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sm-heard/chat-app-ios-native/issues"
+  },
+  "homepage": "https://github.com/sm-heard/chat-app-ios-native#readme",
+  "private": true
+}
