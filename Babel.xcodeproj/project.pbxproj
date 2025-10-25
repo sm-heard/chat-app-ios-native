@@ -20,6 +20,8 @@
 		A6F0C9192C1F80B000AFCB1D /* StreamChat in Frameworks */ = {isa = PBXBuildFile; productRef = A6F0C9422C1F806300AFCB1D /* StreamChat */; };
 		A6F0C9482C1F91BB00AFCB1D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F0C9472C1F91BB00AFCB1D /* ProfileView.swift */; };
 		A6F0C9492C1F91BB00AFCB1D /* ChannelCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F0C9462C1F91BB00AFCB1D /* ChannelCreationView.swift */; };
+		A6F0C94D2C1FA1E900AFCB1D /* PushTokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F0C94E2C1FA1E900AFCB1D /* PushTokenService.swift */; };
+		A6F0C94F2C1FA25700AFCB1D /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F0C9502C1FA25700AFCB1D /* PushNotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		A6F0C9302C1F7E5B00AFCB1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6F0C9312C1F7E5B00AFCB1D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A6F0C9322C1F7E8A00AFCB1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6F0C94E2C1FA1E900AFCB1D /* PushTokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushTokenService.swift; sourceTree = "<group>"; };
+		A6F0C9502C1FA25700AFCB1D /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		A6F0C9462C1F91BB00AFCB1D /* ChannelCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationView.swift; sourceTree = "<group>"; };
 		A6F0C9472C1F91BB00AFCB1D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				A6F0C9242C1F7E1000AFCB1D /* KeychainService.swift */,
+				A6F0C9502C1FA25700AFCB1D /* PushNotificationManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -99,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				A6F0C9232C1F7E1000AFCB1D /* TokenService.swift */,
+				A6F0C94E2C1FA1E900AFCB1D /* PushTokenService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -212,6 +218,8 @@
 				A6F0C9102C1F7D8400AFCB1D /* BabelApp.swift in Sources */,
 				A6F0C9152C1F7D8400AFCB1D /* AppConfig.swift in Sources */,
 				A6F0C9482C1F91BB00AFCB1D /* ProfileView.swift in Sources */,
+				A6F0C94D2C1FA1E900AFCB1D /* PushTokenService.swift in Sources */,
+				A6F0C94F2C1FA25700AFCB1D /* PushNotificationManager.swift in Sources */,
 				A6F0C9132C1F7D8400AFCB1D /* TokenService.swift in Sources */,
 				A6F0C9142C1F7D8400AFCB1D /* KeychainService.swift in Sources */,
 			);

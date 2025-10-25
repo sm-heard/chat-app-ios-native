@@ -32,4 +32,8 @@ enum AppConfig {
         }
         return url
     }
+
+    static var pushProviderName: String? {
+        value(for: "PUSH_PROVIDER_NAME")
+    }
 }

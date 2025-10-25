@@ -107,6 +107,9 @@ final class AppViewModel: ObservableObject {
             } else {
                 currentUser = user
             }
+#if canImport(UserNotifications)
+            await PushNotificationManager.shared.requestAuthorizationIfNeeded()
+#endif
 #else
             state = .connected
 #endif
@@ -118,6 +121,9 @@ final class AppViewModel: ObservableObject {
                 state = .signedOut
                 presentAlert(title: "Sign In Required", message: tokenError.localizedDescription)
                 try? KeychainService.shared.deleteAuthenticatedUser()
+#if canImport(UserNotifications)
+                PushNotificationManager.shared.clearCachedToken()
+#endif
             } else {
                 state = currentUser == nil ? .signedOut : .connecting
                 presentAlert(title: "Connection Failed", message: error.localizedDescription)

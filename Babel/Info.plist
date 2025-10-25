@@ -18,6 +18,8 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>PUSH_PROVIDER_NAME</key>
+	<string>chat-app-ios-native</string>
 	<key>STREAM_API_KEY</key>
 	<string>yxfd7mnyreft</string>
 	<key>TOKEN_ENDPOINT</key>
