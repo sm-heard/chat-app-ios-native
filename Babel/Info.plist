@@ -41,5 +41,9 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allow Babel to access your photos so you can share images in chat.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow Babel to use the camera so you can take photos to share in chat.</string>
 </dict>
 </plist>
