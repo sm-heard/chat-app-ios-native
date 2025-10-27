@@ -9,6 +9,7 @@ struct AuthenticatedUser: Codable, Equatable {
     var identityToken: String?
     var refreshToken: String?
     var authorizationCode: String?
+    var language: String?
 }
 
 enum KeychainServiceError: LocalizedError {
@@ -46,7 +47,7 @@ final class KeychainService {
         }
 
         if let legacyId = String(data: data, encoding: .utf8), !legacyId.isEmpty {
-            return AuthenticatedUser(id: legacyId, name: nil, email: nil)
+            return AuthenticatedUser(id: legacyId, name: nil, email: nil, language: nil)
         }
 
         return nil

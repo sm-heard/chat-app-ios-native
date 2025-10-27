@@ -6,6 +6,7 @@ struct TokenResponse: Decodable {
         let name: String?
         let image: URL?
         let email: String?
+        let language: String?
     }
 
     let token: String
@@ -62,7 +63,8 @@ final class TokenService {
         identityToken: String?,
         authorizationCode: String?,
         refreshToken: String?,
-        appleUserId: String?
+        appleUserId: String?,
+        language: String?
     ) async throws -> TokenResponse {
         let identityTokenValue = identityToken?.trimmingCharacters(in: .whitespacesAndNewlines)
         let refreshTokenValue = refreshToken?.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -85,7 +87,8 @@ final class TokenService {
             "identityToken": identityTokenValue,
             "authorizationCode": authorizationCode,
             "refreshToken": refreshTokenValue,
-            "apple_user_id": appleUserId
+            "apple_user_id": appleUserId,
+            "language": language
         ]
 
         request.httpBody = try JSONSerialization.data(withJSONObject: payload.compactMapValues { $0 }, options: [])

@@ -18,6 +18,7 @@ struct BabelComposerInputView: View {
     let removeAttachmentWithId: (String) -> Void
 
     @EnvironmentObject private var viewModel: MessageComposerViewModel
+    @ObservedObject private var languageSettings = LanguageSettings.shared
     @Injected(\.fonts) private var fonts
     @Injected(\.colors) private var colors
 
@@ -146,7 +147,7 @@ struct BabelComposerInputView: View {
             do {
                 let result = try await AIService.shared.rewrite(
                     text: originalTextBeforeRewrite ?? text.wrappedValue,
-                    targetLanguage: LanguagePreferences.deviceLanguageCode,
+                    targetLanguage: preferredLanguageCode,
                     style: style
                 )
                 await MainActor.run {
@@ -184,7 +185,7 @@ struct BabelComposerInputView: View {
 
                 let result = try await AIService.shared.smartReplies(
                     messages: history,
-                    targetLanguage: LanguagePreferences.deviceLanguageCode
+                    targetLanguage: preferredLanguageCode
                 )
                 await MainActor.run {
                     suggestions = result.suggestions
@@ -214,7 +215,7 @@ struct BabelComposerInputView: View {
             do {
                 let result = try await AIService.shared.translate(
                     text: text.wrappedValue,
-                    sourceLanguage: LanguagePreferences.deviceLanguageCode,
+                    sourceLanguage: preferredLanguageCode,
                     targetLanguage: targetLanguage,
                     messageId: nil
                 )
@@ -240,26 +241,44 @@ struct BabelComposerInputView: View {
             .compactMap { message -> SmartReplyContextMessage? in
                 guard !message.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return nil }
                 let role: SmartReplyContextMessage.Role = message.author.id == currentUserId ? .user : .other
-                let lang = LanguageDetector.shared.detectLanguageCode(for: message.text)
+                let lang = userLanguage(for: message.author) ?? LanguageDetector.shared.detectLanguageCode(for: message.text)
                 return SmartReplyContextMessage(role: role, text: message.text, language: lang)
             }
     }
 
     private func detectTargetLanguage() -> String? {
         let currentUserId = viewModel.channelController.client.currentUserId
+
         for message in viewModel.channelController.messages.reversed() {
             guard message.author.id != currentUserId else { continue }
             guard !message.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { continue }
-            guard let detected = LanguageDetector.shared.detectLanguageCode(for: message.text) else { continue }
-            if !LanguageDetector.shared.languagesMatch(detected, LanguagePreferences.deviceLanguageCode) {
+            if let language = userLanguage(for: message.author), !LanguageDetector.shared.languagesMatch(language, preferredLanguageCode) {
+                return language
+            }
+            if let detected = LanguageDetector.shared.detectLanguageCode(for: message.text), !LanguageDetector.shared.languagesMatch(detected, preferredLanguageCode) {
                 return detected
             }
         }
+
         return nil
     }
 
     private func localizedName(for languageCode: String) -> String {
         Locale.current.localizedString(forLanguageCode: languageCode) ?? languageCode.uppercased()
+    }
+
+    private var preferredLanguageCode: String {
+        languageSettings.preferredLanguageCode ?? LanguagePreferences.deviceLanguageCode
+    }
+
+    private func userLanguage(for user: ChatUser) -> String? {
+        if let languageCode = user.language?.languageCode, !languageCode.isEmpty {
+            return languageCode
+        }
+        if case let .string(extraLanguage)? = user.extraData["language"], !extraLanguage.isEmpty {
+            return extraLanguage
+        }
+        return nil
     }
 }
 #endif

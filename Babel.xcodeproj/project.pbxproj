@@ -24,10 +24,13 @@
 	A6F0C94F2C1FA25700AFCB1D /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F0C9502C1FA25700AFCB1D /* PushNotificationManager.swift */; };
 	B3F1A0112F1C000100000001 /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A0012F1C000100000001 /* AIService.swift */; };
 	B3F1A0122F1C000100000002 /* LanguageDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A0022F1C000100000002 /* LanguageDetector.swift */; };
-	B3F1A0132F1C000100000003 /* TranslationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A0032F1C000100000003 /* TranslationStore.swift */; };
-	B3F1A0192F1C000100000009 /* BabelViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A0092F1C000100000009 /* BabelViewFactory.swift */; };
-	B3F1A01A2F1C00010000000A /* BabelMessageTranslationFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A00A2F1C00010000000A /* BabelMessageTranslationFooterView.swift */; };
-	B3F1A01B2F1C00010000000B /* BabelComposerInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A00B2F1C00010000000B /* BabelComposerInputView.swift */; };
+		B3F1A0132F1C000100000003 /* TranslationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A0032F1C000100000003 /* TranslationStore.swift */; };
+		B3F1A0192F1C000100000009 /* BabelViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A0092F1C000100000009 /* BabelViewFactory.swift */; };
+		B3F1A01A2F1C00010000000A /* BabelMessageTranslationFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A00A2F1C00010000000A /* BabelMessageTranslationFooterView.swift */; };
+		B3F1A01B2F1C00010000000B /* BabelComposerInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A00B2F1C00010000000B /* BabelComposerInputView.swift */; };
+		B3F1A01C2F1C00010000000C /* LanguageSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A00C2F1C00010000000C /* LanguageSettings.swift */; };
+		B3F1A01D2F1C00010000000D /* LanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A00D2F1C00010000000D /* LanguageService.swift */; };
+		B3F1A01E2F1C00010000000E /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A00E2F1C00010000000E /* LanguageSelectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,10 +51,13 @@
 	A6F0C9502C1FA25700AFCB1D /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 	B3F1A0012F1C000100000001 /* AIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIService.swift; sourceTree = "<group>"; };
 	B3F1A0022F1C000100000002 /* LanguageDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDetector.swift; sourceTree = "<group>"; };
-	B3F1A0032F1C000100000003 /* TranslationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationStore.swift; sourceTree = "<group>"; };
-	B3F1A0092F1C000100000009 /* BabelViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabelViewFactory.swift; sourceTree = "<group>"; };
-	B3F1A00A2F1C00010000000A /* BabelMessageTranslationFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabelMessageTranslationFooterView.swift; sourceTree = "<group>"; };
-	B3F1A00B2F1C00010000000B /* BabelComposerInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabelComposerInputView.swift; sourceTree = "<group>"; };
+		B3F1A0032F1C000100000003 /* TranslationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationStore.swift; sourceTree = "<group>"; };
+		B3F1A0092F1C000100000009 /* BabelViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabelViewFactory.swift; sourceTree = "<group>"; };
+		B3F1A00A2F1C00010000000A /* BabelMessageTranslationFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabelMessageTranslationFooterView.swift; sourceTree = "<group>"; };
+		B3F1A00B2F1C00010000000B /* BabelComposerInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabelComposerInputView.swift; sourceTree = "<group>"; };
+		B3F1A00C2F1C00010000000C /* LanguageSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSettings.swift; sourceTree = "<group>"; };
+		B3F1A00D2F1C00010000000D /* LanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageService.swift; sourceTree = "<group>"; };
+		B3F1A00E2F1C00010000000E /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,21 +101,23 @@
 			path = Babel;
 			sourceTree = "<group>";
 		};
-		A6F0C9032C1F7D6D00AFCB1D /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				A6F0C9242C1F7E1000AFCB1D /* KeychainService.swift */,
-				A6F0C9502C1FA25700AFCB1D /* PushNotificationManager.swift */,
-			);
+	A6F0C9032C1F7D6D00AFCB1D /* Services */ = {
+		isa = PBXGroup;
+		children = (
+			A6F0C9242C1F7E1000AFCB1D /* KeychainService.swift */,
+			A6F0C9502C1FA25700AFCB1D /* PushNotificationManager.swift */,
+			B3F1A00C2F1C00010000000C /* LanguageSettings.swift */,
+		);
 			path = Services;
 			sourceTree = "<group>";
 		};
-		A6F0C9042C1F7D6D00AFCB1D /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				A6F0C9232C1F7E1000AFCB1D /* TokenService.swift */,
-				A6F0C94E2C1FA1E900AFCB1D /* PushTokenService.swift */,
-			);
+	A6F0C9042C1F7D6D00AFCB1D /* Networking */ = {
+		isa = PBXGroup;
+		children = (
+			A6F0C9232C1F7E1000AFCB1D /* TokenService.swift */,
+			A6F0C94E2C1FA1E900AFCB1D /* PushTokenService.swift */,
+			B3F1A00D2F1C00010000000D /* LanguageService.swift */,
+		);
 			path = Networking;
 			sourceTree = "<group>";
 		};
@@ -155,6 +163,7 @@
 			B3F1A0092F1C000100000009 /* BabelViewFactory.swift */,
 			B3F1A00A2F1C00010000000A /* BabelMessageTranslationFooterView.swift */,
 			B3F1A00B2F1C00010000000B /* BabelComposerInputView.swift */,
+			B3F1A00E2F1C00010000000E /* LanguageSelectionView.swift */,
 		);
 		path = Views;
 		sourceTree = "<group>";
@@ -255,6 +264,9 @@
 			B3F1A0192F1C000100000009 /* BabelViewFactory.swift in Sources */,
 			B3F1A01A2F1C00010000000A /* BabelMessageTranslationFooterView.swift in Sources */,
 			B3F1A01B2F1C00010000000B /* BabelComposerInputView.swift in Sources */,
+			B3F1A01C2F1C00010000000C /* LanguageSettings.swift in Sources */,
+			B3F1A01D2F1C00010000000D /* LanguageService.swift in Sources */,
+			B3F1A01E2F1C00010000000E /* LanguageSelectionView.swift in Sources */,
 		);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

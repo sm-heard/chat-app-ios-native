@@ -4,7 +4,7 @@
 - Client (iOS):
   - On-device language detection via `NaturalLanguage.NLLanguageRecognizer` (any source → device language target).
   - New message actions: Translate/Show Original, Explain (combined), Tone Rewrite; composer Suggestions button.
-  - Auto-translate default ON (no feature flag, no language picker); per-message Show Original toggle.
+  - Auto-translate default ON; first-launch language picker stores preferred language per user; per-message Show Original toggle.
   - Client-side translation cache (messageId+targetLang) with ~2h TTL.
 - Server (Vercel):
   - Single endpoint: `/api/ai` with `task` param: `translate | explain | tone | smart_replies`.
@@ -13,7 +13,7 @@
 
 ## Milestones
 1) Foundations (Day 1)
-- Add iOS language detection utility; derive target from device language; persist tone preference.
+- Add iOS language detection utility; derive default target from device language; build language settings manager and first-launch picker; persist tone preference.
 - Scaffold single Vercel endpoint `/api/ai` with mock responses.
 - Derive API base from existing `TOKEN_ENDPOINT` (drop `/api/stream/token`). No new Info.plist keys.
 

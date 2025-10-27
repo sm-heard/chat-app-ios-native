@@ -45,6 +45,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     identityToken,
     authorizationCode,
     refreshToken,
+    language,
   }: {
     user_id?: unknown;
     apple_user_id?: unknown;
@@ -54,6 +55,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     identityToken?: unknown;
     authorizationCode?: unknown;
     refreshToken?: unknown;
+    language?: unknown;
   } = req.body ?? {};
 
   if (typeof userId !== "string" || userId.trim().length === 0) {
@@ -61,6 +63,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const streamUserId = sanitizeStreamUserId(userId.trim());
+
+  const normalizedLanguage = typeof language === "string" && language.trim().length > 0 ? sanitizeLanguage(language.trim()) : undefined;
 
   let appleUserId = typeof appleUserIdInput === "string" ? appleUserIdInput.trim() : undefined;
   if (!appleUserId || appleUserId.length === 0) {
@@ -112,6 +116,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       name,
       image,
       email: finalEmail,
+      language: normalizedLanguage,
     });
 
     await ensureGeneralChannelMembership(serverClient, streamUserId);
@@ -120,7 +125,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     return res.status(200).json({
       token,
-      user: { id: streamUserId, name, image, email: finalEmail },
+      user: { id: streamUserId, name, image, email: finalEmail, language: normalizedLanguage },
       apiKey,
       refreshToken: refreshTokenValue,
       appleIdentityToken: identityTokenForVerification,
@@ -193,6 +198,14 @@ function sanitizeStreamUserId(id: string): string {
     return sanitized;
   }
   return "user-" + Math.random().toString(36).replace(/[^a-z0-9]/g, "").slice(0, 8);
+}
+
+function sanitizeLanguage(code: string): string | undefined {
+  const normalized = code.trim();
+  if (!/^[A-Za-z-]{2,10}$/.test(normalized)) {
+    return undefined;
+  }
+  return normalized;
 }
 
 type IdentityResolutionResult = {

@@ -111,6 +111,11 @@ final class AppViewModel: ObservableObject {
             } else {
                 currentUser = user
             }
+
+            if let language = currentUser?.language, !language.isEmpty,
+               LanguageSettings.shared.preferredLanguageCode != language {
+                LanguageSettings.shared.setPreferredLanguage(code: language)
+            }
 #if canImport(UserNotifications)
             await PushNotificationManager.shared.requestAuthorizationIfNeeded()
 #endif
@@ -229,7 +234,8 @@ final class AppViewModel: ObservableObject {
             email: email,
             identityToken: identityToken,
             refreshToken: existingUser?.refreshToken,
-            authorizationCode: authorizationCode ?? existingUser?.authorizationCode
+            authorizationCode: authorizationCode ?? existingUser?.authorizationCode,
+            language: existingUser?.language
         )
     }
 #endif
@@ -381,9 +387,26 @@ private final class AppleSignInCoordinator: NSObject, ASAuthorizationControllerD
         if let email = payload.email, !email.isEmpty {
             merged.email = email
         }
+        if let language = payload.language, !language.isEmpty {
+            merged.language = language
+        }
         return merged
     }
 #endif
+
+    func updatePreferredLanguageIfNeeded(code: String) async {
+        guard let currentUser else { return }
+        if currentUser.language == code { return }
+        do {
+            try await LanguageService.shared.updateLanguage(code: code, userId: currentUser.id)
+            var updatedUser = currentUser
+            updatedUser.language = code
+            self.currentUser = updatedUser
+            try? KeychainService.shared.saveAuthenticatedUser(updatedUser)
+        } catch {
+            presentAlert(title: "Language Update Failed", message: error.localizedDescription)
+        }
+    }
 
     private func presentAlert(title: String, message: String) {
         alertTitle = title
@@ -428,7 +451,8 @@ private actor ChatController {
             identityToken: user.identityToken,
             authorizationCode: user.authorizationCode,
             refreshToken: user.refreshToken,
-            appleUserId: user.appleUserId ?? user.id
+            appleUserId: user.appleUserId ?? user.id,
+            language: LanguageSettings.shared.preferredLanguageCode
         )
 
         let config = ChatClientConfig(apiKeyString: AppConfig.streamAPIKey)

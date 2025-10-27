@@ -1,18 +1,31 @@
 import SwiftUI
 
 struct ProfileView: View {
-    let user: AuthenticatedUser?
+    @ObservedObject var viewModel: AppViewModel
+    @ObservedObject private var languageSettings = LanguageSettings.shared
+    @State private var showingLanguagePicker = false
 
     var body: some View {
         NavigationView {
             content
                 .navigationTitle("Profile")
+                .sheet(isPresented: $showingLanguagePicker) {
+                    LanguageSelectionView(
+                        selectedCode: languageSettings.preferredLanguageCode,
+                        onSelect: { option in
+                            languageSettings.setPreferredLanguage(code: option.code)
+                            Task { await viewModel.updatePreferredLanguageIfNeeded(code: option.code) }
+                            showingLanguagePicker = false
+                        },
+                        onCancel: { showingLanguagePicker = false }
+                    )
+                }
         }
     }
 
     @ViewBuilder
     private var content: some View {
-        if let user {
+        if let user = viewModel.currentUser {
             List {
                 Section(header: Text("Account")) {
                     ProfileRow(label: "Display Name", value: user.name ?? "—")
@@ -29,6 +42,21 @@ struct ProfileView: View {
                 Section(header: Text("Sign-In State")) {
                     ProfileRow(label: "Identity Token", value: tokenStatus(user.identityToken))
                     ProfileRow(label: "Refresh Token", value: tokenStatus(user.refreshToken))
+                }
+
+                Section(header: Text("Language")) {
+                    Button {
+                        showingLanguagePicker = true
+                    } label: {
+                        HStack {
+                            Text("Preferred Language")
+                                .foregroundStyle(.primary)
+                            Spacer()
+                            Text(languageSettings.preferredLanguageOption?.displayName ?? languageSettings.preferredLanguageCode?.uppercased() ?? "Select")
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .buttonStyle(.plain)
                 }
             }
             .listStyle(.insetGrouped)
@@ -62,4 +90,3 @@ private struct ProfileRow: View {
         .padding(.vertical, 4)
     }
 }
-

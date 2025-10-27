@@ -5,6 +5,7 @@ import SwiftUI
 
 struct BabelMessageTranslationFooterView: View {
     @ObservedObject var messageViewModel: MessageViewModel
+    @ObservedObject private var languageSettings = LanguageSettings.shared
 
     @Injected(\.fonts) private var fonts
     @Injected(\.colors) private var colors
@@ -29,9 +30,9 @@ struct BabelMessageTranslationFooterView: View {
                     translationContent
                     controlRow
                     if let errorMessage {
-                    Text(errorMessage)
-                        .font(fonts.footnote)
-                        .foregroundColor(.orange)
+                        Text(errorMessage)
+                            .font(fonts.footnote)
+                            .foregroundColor(.orange)
                     }
                 }
             }
@@ -42,6 +43,10 @@ struct BabelMessageTranslationFooterView: View {
         }
         .onReceive(notificationCenter.publisher(for: .translationEntryFailed)) { notification in
             handleTranslationFailure(notification: notification)
+        }
+        .onReceive(languageSettings.$preferredLanguageCode) { _ in
+            translationEntry = nil
+            loadIfNeeded()
         }
         .alert(isPresented: $showExplanationAlert) {
             if let explanationText {
@@ -115,32 +120,42 @@ struct BabelMessageTranslationFooterView: View {
     }
 
     private var shouldShow: Bool {
+        guard let targetLanguage = languageSettings.preferredLanguageCode else { return false }
         let message = messageViewModel.message
         guard !message.isSentByCurrentUser else { return false }
         guard !message.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return false }
 
+        if let authorLanguage = message.author.language?.languageCode, !authorLanguage.isEmpty {
+            return !LanguageDetector.shared.languagesMatch(authorLanguage, targetLanguage)
+        }
+
         let detected = LanguageDetector.shared.detectLanguageCode(for: message.text)
-        return LanguageDetector.shared.shouldTranslate(
-            sourceLanguage: detected,
-            targetLanguage: LanguagePreferences.deviceLanguageCode
-        )
+        return LanguageDetector.shared.shouldTranslate(sourceLanguage: detected, targetLanguage: targetLanguage)
     }
 
     private func loadIfNeeded() {
+        guard let targetLanguage = languageSettings.preferredLanguageCode else {
+            translationEntry = nil
+            isLoading = false
+            return
+        }
+
         let message = messageViewModel.message
         displayMode = TranslationStore.shared.displayMode(for: message.id)
-        let key = TranslationKey(messageId: message.id, targetLanguage: LanguagePreferences.deviceLanguageCode)
+        let key = TranslationKey(messageId: message.id, targetLanguage: targetLanguage)
         if let cached = TranslationStore.shared.cachedEntry(for: key) {
             translationEntry = cached
             isLoading = false
         } else {
             isLoading = true
-            TranslationCoordinator.shared.ensureTranslation(
-                key: key,
-                text: message.text,
-                sourceLanguage: LanguageDetector.shared.detectLanguageCode(for: message.text),
-                targetLanguage: LanguagePreferences.deviceLanguageCode
-            )
+            Task {
+                await TranslationCoordinator.shared.ensureTranslation(
+                    key: key,
+                    text: message.text,
+                    sourceLanguage: LanguageDetector.shared.detectLanguageCode(for: message.text),
+                    targetLanguage: targetLanguage
+                )
+            }
         }
     }
 
@@ -149,7 +164,7 @@ struct BabelMessageTranslationFooterView: View {
             let messageId = notification.userInfo?[TranslationNotificationKey.messageId] as? String,
             messageId == messageViewModel.message.id,
             let target = notification.userInfo?[TranslationNotificationKey.targetLanguage] as? String,
-            target == LanguagePreferences.deviceLanguageCode,
+            target == languageSettings.preferredLanguageCode,
             let entry = notification.userInfo?[TranslationNotificationKey.entry] as? TranslationEntry
         else { return }
 
@@ -163,7 +178,7 @@ struct BabelMessageTranslationFooterView: View {
             let messageId = notification.userInfo?[TranslationNotificationKey.messageId] as? String,
             messageId == messageViewModel.message.id,
             let target = notification.userInfo?[TranslationNotificationKey.targetLanguage] as? String,
-            target == LanguagePreferences.deviceLanguageCode
+            target == languageSettings.preferredLanguageCode
         else { return }
 
         isLoading = false
@@ -188,7 +203,7 @@ struct BabelMessageTranslationFooterView: View {
             do {
                 let result = try await AIService.shared.explain(
                     text: messageViewModel.message.text,
-                    targetLanguage: LanguagePreferences.deviceLanguageCode
+                    targetLanguage: languageSettings.preferredLanguageCode ?? LanguagePreferences.deviceLanguageCode
                 )
                 await MainActor.run {
                     explanationText = result.explanation

@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct RootView: View {
+    @ObservedObject private var languageSettings = LanguageSettings.shared
     @StateObject private var viewModel = AppViewModel()
+    @State private var showingLanguagePrompt = false
 
     var body: some View {
         content
@@ -14,6 +16,35 @@ struct RootView: View {
                 }
             } message: {
                 Text(viewModel.alertMessage)
+            }
+            .sheet(isPresented: $showingLanguagePrompt, onDismiss: {
+                if languageSettings.preferredLanguageCode == nil {
+                    showingLanguagePrompt = true
+                }
+            }) {
+                LanguageSelectionView(
+                    selectedCode: languageSettings.preferredLanguageCode,
+                    onSelect: { option in
+                        languageSettings.setPreferredLanguage(code: option.code)
+                        Task { await viewModel.updatePreferredLanguageIfNeeded(code: option.code) }
+                        showingLanguagePrompt = false
+                    },
+                    onCancel: {
+                        if languageSettings.preferredLanguageCode == nil {
+                            showingLanguagePrompt = true
+                        } else {
+                            showingLanguagePrompt = false
+                        }
+                    }
+                )
+            }
+            .onAppear {
+                if languageSettings.preferredLanguageCode == nil {
+                    showingLanguagePrompt = true
+                }
+            }
+            .onReceive(languageSettings.$preferredLanguageCode) { code in
+                showingLanguagePrompt = (code == nil)
             }
     }
 
@@ -99,7 +130,7 @@ struct ChatContainerView: View {
                 }
             }
 
-            ProfileView(user: viewModel.currentUser)
+            ProfileView(viewModel: viewModel)
                 .tabItem {
                     Label("Profile", systemImage: "person.crop.circle")
                 }

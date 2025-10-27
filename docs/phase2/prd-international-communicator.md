@@ -4,7 +4,7 @@
 - Persona: International Communicator — users messaging across languages (friends, family, colleagues).
 - Goal: Remove language friction by translating in real time, surfacing cultural context, and helping users adjust tone across languages.
 - Scope: Deliver all 5 required AI features for this persona plus 1 advanced capability.
-- Simplifications: Any source language → device language (QA focus EN↔JA), OpenAI provider, enabled by default, no feature flags, client-side caching only, no telemetry.
+- Simplifications: Any source language → user-selected preferred language (QA focus EN↔JA), OpenAI provider, enabled by default, no feature flags, client-side caching only, no telemetry.
 
 ## Objectives
 - Enable seamless cross-language conversations with minimal user effort.
@@ -31,9 +31,10 @@
 - Preferences: Stored per-device (UserDefaults) to keep implementation simple; no cross-device sync in Phase 2.
 
 ## Features (Required)
-1) Real-time translation (inline) — Any source → device language (QA focus EN↔JA)
+1) Real-time translation (inline) — Any source → user’s preferred language (QA focus EN↔JA)
+- Require every user to pick a preferred language on launch (defaults to device language suggestion).
 - Show translated text inline beneath original with a quick toggle (Show Original/Show Translation).
-- Composer action: “Translate and send to {detected other language}” appears when last incoming ≠ device language; preview before sending.
+- Composer action: “Translate and send to {detected other language}” appears when last incoming ≠ preferred language; preview before sending.
 
 2) Language detection & auto-translate (default ON)
 - Detect language for incoming/outgoing text on-device, and auto-translate to the viewer’s preferred language when the channel is set to auto-translate.
@@ -52,7 +53,8 @@ Context-Aware Smart Replies (chosen)
 - Offer 2–3 reply suggestions in the user’s device language, consistent with tone preference and last few messages (short window). If last incoming language ≠ device language, show a “Translate and send to {detected}” pill after insertion.
 
 ## User Experience
-- Incoming messages auto-translate to device language by default; per-message “Show Original” toggle.
+- First launch prompts the user to choose a preferred language (pre-filled with device language) and they can update it later from Profile.
+- Incoming messages auto-translate to the selected preferred language by default; per-message “Show Original” toggle.
 - Long-press on message shows: Translate/Show Original, Explain, Copy, Report.
 - Composer has a “Tone” pill (Formal/Neutral/Casual) and shows a “Translate and send to {detected}” pill when last incoming ≠ device language.
 - Smart Replies: On-demand via a Suggestions button near the composer; chips insert editable text.
@@ -69,7 +71,7 @@ Context-Aware Smart Replies (chosen)
 - Degrade gracefully: if AI fails, show original content and a retry affordance.
 
 ## Acceptance Criteria
-- Inline translation works reliably for any source → device language (validated EN↔JA) with stable toggling.
+- Inline translation works reliably for any source → the user’s selected preferred language (validated EN↔JA) with stable toggling.
 - Auto-translate is enabled by default per channel and persists on-device across sessions.
 - Cultural context and slang explanations return relevant, concise guidance in < 1.5 s P95.
 - Formality rewrite offers formal/neutral/casual and respects emoji/punctuation.
