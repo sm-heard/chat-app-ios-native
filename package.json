@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "jose": "^5.9.4",
+    "openai": "^6.7.0",
     "stream-chat": "^9.25.0",
     "ts-node": "^10.9.2"
   },

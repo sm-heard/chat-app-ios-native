@@ -68,18 +68,23 @@ struct ChatContainerView: View {
     var body: some View {
         TabView {
             NavigationView {
-                ChatChannelListView(title: "Babel")
-                    .navigationTitle("Chats")
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button {
-                                showingChannelCreator = true
-                            } label: {
-                                Image(systemName: "square.and.pencil")
+                if let chatClient = viewModel.chatClient {
+                    ChatChannelListView(viewFactory: BabelViewFactory(chatClient: chatClient), title: "Babel")
+                        .navigationTitle("Chats")
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button {
+                                    showingChannelCreator = true
+                                } label: {
+                                    Image(systemName: "square.and.pencil")
+                                }
+                                .disabled(viewModel.currentUser == nil)
                             }
-                            .disabled(viewModel.chatClient == nil || viewModel.currentUser == nil)
                         }
-                    }
+                } else {
+                    ProgressView("Loading chats…")
+                        .progressViewStyle(.circular)
+                }
             }
             .navigationViewStyle(.stack)
             .tabItem {

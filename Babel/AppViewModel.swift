@@ -6,6 +6,10 @@ import StreamChat
 import StreamChatSwiftUI
 #endif
 
+#if canImport(StreamChatUI)
+import StreamChatUI
+#endif
+
 #if canImport(AuthenticationServices)
 import AuthenticationServices
 import UIKit
