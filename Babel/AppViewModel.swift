@@ -43,6 +43,12 @@ final class AppViewModel: ObservableObject {
 #endif
     private var isConnecting = false
 
+    init() {
+#if canImport(StreamChatUI)
+        configureStreamComponents()
+#endif
+    }
+
     func start(force: Bool = false) async {
         if isConnecting && !force { return }
         state = .loading
@@ -423,6 +429,15 @@ private final class AppleSignInCoordinator: NSObject, ASAuthorizationControllerD
         let hasAppleId = !appleId.isEmpty
         return hasAppleId && (identityAvailable || refreshAvailable)
     }
+
+#if canImport(StreamChatUI)
+    private func configureStreamComponents() {
+        var components = Components.default
+        components.messageAutoTranslationEnabled = true
+        components.messageLayoutOptionsResolver = BabelMessageLayoutOptionsResolver()
+        Components.default = components
+    }
+#endif
 }
 
 #if canImport(StreamChat) && canImport(StreamChatSwiftUI)

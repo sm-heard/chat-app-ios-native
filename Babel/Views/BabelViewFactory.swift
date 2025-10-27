@@ -16,6 +16,39 @@ final class BabelViewFactory: ViewFactory {
         BabelMessageTranslationFooterView(messageViewModel: messageViewModel)
     }
 
+    func makeMessageContainerView(
+        channel: ChatChannel,
+        message: ChatMessage,
+        width: CGFloat?,
+        showsAllInfo: Bool,
+        isInThread: Bool,
+        scrolledId: Binding<String?>,
+        quotedMessage: Binding<ChatMessage?>,
+        onLongPress: @escaping (MessageDisplayInfo) -> Void,
+        isLast: Bool
+    ) -> some View {
+        let viewModel = MessageViewModel(message: message, channel: channel)
+
+        return VStack(alignment: message.isRightAligned ? .trailing : .leading, spacing: 0) {
+            MessageContainerView(
+                factory: self,
+                channel: channel,
+                message: message,
+                width: width,
+                showsAllInfo: showsAllInfo,
+                isInThread: isInThread,
+                isLast: isLast,
+                scrolledId: scrolledId,
+                quotedMessage: quotedMessage,
+                onLongPress: onLongPress,
+                viewModel: viewModel
+            )
+
+            BabelMessageTranslationFooterView(messageViewModel: viewModel)
+                .padding(.top, 4)
+        }
+    }
+
     func makeComposerInputView(
         text: Binding<String>,
         selectedRangeLocation: Binding<Int>,

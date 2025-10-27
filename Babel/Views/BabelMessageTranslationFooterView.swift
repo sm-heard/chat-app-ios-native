@@ -25,9 +25,11 @@ struct BabelMessageTranslationFooterView: View {
 
     var body: some View {
         Group {
-            if shouldShow {
+            if shouldDisplayFooter {
                 VStack(alignment: .leading, spacing: 6) {
-                    translationContent
+                    if needsTranslation {
+                        translationContent
+                    }
                     controlRow
                     if let errorMessage {
                         Text(errorMessage)
@@ -93,7 +95,7 @@ struct BabelMessageTranslationFooterView: View {
 
     private var controlRow: some View {
         HStack(spacing: 12) {
-            if translationEntry != nil {
+            if needsTranslation, translationEntry != nil {
                 Button(action: toggleDisplayMode) {
                     Text(displayMode == .translated ? "Show original" : "Show translation")
                 }
@@ -119,10 +121,15 @@ struct BabelMessageTranslationFooterView: View {
         }
     }
 
-    private var shouldShow: Bool {
-        guard let targetLanguage = languageSettings.preferredLanguageCode else { return false }
+    private var shouldDisplayFooter: Bool {
         let message = messageViewModel.message
         guard !message.isSentByCurrentUser else { return false }
+        return !message.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
+    private var needsTranslation: Bool {
+        let targetLanguage = languageSettings.preferredLanguageCode ?? LanguagePreferences.deviceLanguageCode
+        let message = messageViewModel.message
         guard !message.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return false }
 
         if let authorLanguage = message.author.language?.languageCode, !authorLanguage.isEmpty {
@@ -134,14 +141,23 @@ struct BabelMessageTranslationFooterView: View {
     }
 
     private func loadIfNeeded() {
-        guard let targetLanguage = languageSettings.preferredLanguageCode else {
+        guard shouldDisplayFooter else {
             translationEntry = nil
             isLoading = false
+            errorMessage = nil
+            return
+        }
+
+        guard needsTranslation else {
+            translationEntry = nil
+            isLoading = false
+            errorMessage = nil
             return
         }
 
         let message = messageViewModel.message
         displayMode = TranslationStore.shared.displayMode(for: message.id)
+        let targetLanguage = languageSettings.preferredLanguageCode ?? LanguagePreferences.deviceLanguageCode
         let key = TranslationKey(messageId: message.id, targetLanguage: targetLanguage)
         if let cached = TranslationStore.shared.cachedEntry(for: key) {
             translationEntry = cached
@@ -160,12 +176,13 @@ struct BabelMessageTranslationFooterView: View {
     }
 
     private func handleTranslationUpdate(notification: Notification) {
-        guard
-            let messageId = notification.userInfo?[TranslationNotificationKey.messageId] as? String,
-            messageId == messageViewModel.message.id,
-            let target = notification.userInfo?[TranslationNotificationKey.targetLanguage] as? String,
-            target == languageSettings.preferredLanguageCode,
-            let entry = notification.userInfo?[TranslationNotificationKey.entry] as? TranslationEntry
+        guard needsTranslation else { return }
+        let targetLanguage = languageSettings.preferredLanguageCode ?? LanguagePreferences.deviceLanguageCode
+        guard let target = notification.userInfo?[TranslationNotificationKey.targetLanguage] as? String,
+              target == targetLanguage,
+              let messageId = notification.userInfo?[TranslationNotificationKey.messageId] as? String,
+              messageId == messageViewModel.message.id,
+              let entry = notification.userInfo?[TranslationNotificationKey.entry] as? TranslationEntry
         else { return }
 
         translationEntry = entry
@@ -174,11 +191,12 @@ struct BabelMessageTranslationFooterView: View {
     }
 
     private func handleTranslationFailure(notification: Notification) {
-        guard
-            let messageId = notification.userInfo?[TranslationNotificationKey.messageId] as? String,
-            messageId == messageViewModel.message.id,
-            let target = notification.userInfo?[TranslationNotificationKey.targetLanguage] as? String,
-            target == languageSettings.preferredLanguageCode
+        guard needsTranslation else { return }
+        let targetLanguage = languageSettings.preferredLanguageCode ?? LanguagePreferences.deviceLanguageCode
+        guard let messageId = notification.userInfo?[TranslationNotificationKey.messageId] as? String,
+              messageId == messageViewModel.message.id,
+              let target = notification.userInfo?[TranslationNotificationKey.targetLanguage] as? String,
+              target == targetLanguage
         else { return }
 
         isLoading = false

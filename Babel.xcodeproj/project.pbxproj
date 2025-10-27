@@ -21,9 +21,9 @@
 		A6F0C9482C1F91BB00AFCB1D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F0C9472C1F91BB00AFCB1D /* ProfileView.swift */; };
 		A6F0C9492C1F91BB00AFCB1D /* ChannelCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F0C9462C1F91BB00AFCB1D /* ChannelCreationView.swift */; };
 		A6F0C94D2C1FA1E900AFCB1D /* PushTokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F0C94E2C1FA1E900AFCB1D /* PushTokenService.swift */; };
-	A6F0C94F2C1FA25700AFCB1D /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F0C9502C1FA25700AFCB1D /* PushNotificationManager.swift */; };
-	B3F1A0112F1C000100000001 /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A0012F1C000100000001 /* AIService.swift */; };
-	B3F1A0122F1C000100000002 /* LanguageDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A0022F1C000100000002 /* LanguageDetector.swift */; };
+		A6F0C94F2C1FA25700AFCB1D /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F0C9502C1FA25700AFCB1D /* PushNotificationManager.swift */; };
+		B3F1A0112F1C000100000001 /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A0012F1C000100000001 /* AIService.swift */; };
+		B3F1A0122F1C000100000002 /* LanguageDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A0022F1C000100000002 /* LanguageDetector.swift */; };
 		B3F1A0132F1C000100000003 /* TranslationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A0032F1C000100000003 /* TranslationStore.swift */; };
 		B3F1A0192F1C000100000009 /* BabelViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A0092F1C000100000009 /* BabelViewFactory.swift */; };
 		B3F1A01A2F1C00010000000A /* BabelMessageTranslationFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F1A00A2F1C00010000000A /* BabelMessageTranslationFooterView.swift */; };
@@ -47,10 +47,10 @@
 		A6F0C9322C1F7E8A00AFCB1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6F0C9462C1F91BB00AFCB1D /* ChannelCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationView.swift; sourceTree = "<group>"; };
 		A6F0C9472C1F91BB00AFCB1D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-	A6F0C94E2C1FA1E900AFCB1D /* PushTokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushTokenService.swift; sourceTree = "<group>"; };
-	A6F0C9502C1FA25700AFCB1D /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
-	B3F1A0012F1C000100000001 /* AIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIService.swift; sourceTree = "<group>"; };
-	B3F1A0022F1C000100000002 /* LanguageDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDetector.swift; sourceTree = "<group>"; };
+		A6F0C94E2C1FA1E900AFCB1D /* PushTokenService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushTokenService.swift; sourceTree = "<group>"; };
+		A6F0C9502C1FA25700AFCB1D /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
+		B3F1A0012F1C000100000001 /* AIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIService.swift; sourceTree = "<group>"; };
+		B3F1A0022F1C000100000002 /* LanguageDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDetector.swift; sourceTree = "<group>"; };
 		B3F1A0032F1C000100000003 /* TranslationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationStore.swift; sourceTree = "<group>"; };
 		B3F1A0092F1C000100000009 /* BabelViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabelViewFactory.swift; sourceTree = "<group>"; };
 		B3F1A00A2F1C00010000000A /* BabelMessageTranslationFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabelMessageTranslationFooterView.swift; sourceTree = "<group>"; };
@@ -82,16 +82,16 @@
 			);
 			sourceTree = "<group>";
 		};
-	A6F0C9022C1F7D6D00AFCB1D /* Babel */ = {
-		isa = PBXGroup;
-		children = (
-			7063F15B2EAB404600AB64D1 /* Babel.entitlements */,
-			B3F1A0202F1C000100000006 /* AI */,
-			A6F0C94A2C1F91E700AFCB1D /* Views */,
-			A6F0C9202C1F7E1000AFCB1D /* BabelApp.swift */,
-			A6F0C9212C1F7E1000AFCB1D /* ContentView.swift */,
-			A6F0C9222C1F7E1000AFCB1D /* AppViewModel.swift */,
-			A6F0C9332C1F7E8A00AFCB1D /* Config */,
+		A6F0C9022C1F7D6D00AFCB1D /* Babel */ = {
+			isa = PBXGroup;
+			children = (
+				7063F15B2EAB404600AB64D1 /* Babel.entitlements */,
+				B3F1A0202F1C000100000006 /* AI */,
+				A6F0C94A2C1F91E700AFCB1D /* Views */,
+				A6F0C9202C1F7E1000AFCB1D /* BabelApp.swift */,
+				A6F0C9212C1F7E1000AFCB1D /* ContentView.swift */,
+				A6F0C9222C1F7E1000AFCB1D /* AppViewModel.swift */,
+				A6F0C9332C1F7E8A00AFCB1D /* Config */,
 				A6F0C9042C1F7D6D00AFCB1D /* Networking */,
 				A6F0C9032C1F7D6D00AFCB1D /* Services */,
 				A6F0C9302C1F7E5B00AFCB1D /* Assets.xcassets */,
@@ -101,44 +101,34 @@
 			path = Babel;
 			sourceTree = "<group>";
 		};
-	A6F0C9032C1F7D6D00AFCB1D /* Services */ = {
-		isa = PBXGroup;
-		children = (
-			A6F0C9242C1F7E1000AFCB1D /* KeychainService.swift */,
-			A6F0C9502C1FA25700AFCB1D /* PushNotificationManager.swift */,
-			B3F1A00C2F1C00010000000C /* LanguageSettings.swift */,
-		);
+		A6F0C9032C1F7D6D00AFCB1D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A6F0C9242C1F7E1000AFCB1D /* KeychainService.swift */,
+				A6F0C9502C1FA25700AFCB1D /* PushNotificationManager.swift */,
+				B3F1A00C2F1C00010000000C /* LanguageSettings.swift */,
+			);
 			path = Services;
 			sourceTree = "<group>";
 		};
-	A6F0C9042C1F7D6D00AFCB1D /* Networking */ = {
-		isa = PBXGroup;
-		children = (
-			A6F0C9232C1F7E1000AFCB1D /* TokenService.swift */,
-			A6F0C94E2C1FA1E900AFCB1D /* PushTokenService.swift */,
-			B3F1A00D2F1C00010000000D /* LanguageService.swift */,
-		);
+		A6F0C9042C1F7D6D00AFCB1D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A6F0C9232C1F7E1000AFCB1D /* TokenService.swift */,
+				A6F0C94E2C1FA1E900AFCB1D /* PushTokenService.swift */,
+				B3F1A00D2F1C00010000000D /* LanguageService.swift */,
+			);
 			path = Networking;
 			sourceTree = "<group>";
 		};
-	A6F0C9332C1F7E8A00AFCB1D /* Config */ = {
-		isa = PBXGroup;
-		children = (
-			A6F0C9252C1F7E1000AFCB1D /* AppConfig.swift */,
-		);
-		path = Config;
-		sourceTree = "<group>";
-	};
-	B3F1A0202F1C000100000006 /* AI */ = {
-		isa = PBXGroup;
-		children = (
-			B3F1A0012F1C000100000001 /* AIService.swift */,
-			B3F1A0022F1C000100000002 /* LanguageDetector.swift */,
-			B3F1A0032F1C000100000003 /* TranslationStore.swift */,
-		);
-		path = AI;
-		sourceTree = "<group>";
-	};
+		A6F0C9332C1F7E8A00AFCB1D /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				A6F0C9252C1F7E1000AFCB1D /* AppConfig.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		A6F0C9342C1F7E8A00AFCB1D /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,19 +145,29 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-	A6F0C94A2C1F91E700AFCB1D /* Views */ = {
-		isa = PBXGroup;
-		children = (
-			A6F0C9462C1F91BB00AFCB1D /* ChannelCreationView.swift */,
-			A6F0C9472C1F91BB00AFCB1D /* ProfileView.swift */,
-			B3F1A0092F1C000100000009 /* BabelViewFactory.swift */,
-			B3F1A00A2F1C00010000000A /* BabelMessageTranslationFooterView.swift */,
-			B3F1A00B2F1C00010000000B /* BabelComposerInputView.swift */,
-			B3F1A00E2F1C00010000000E /* LanguageSelectionView.swift */,
-		);
-		path = Views;
-		sourceTree = "<group>";
-	};
+		A6F0C94A2C1F91E700AFCB1D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A6F0C9462C1F91BB00AFCB1D /* ChannelCreationView.swift */,
+				A6F0C9472C1F91BB00AFCB1D /* ProfileView.swift */,
+				B3F1A0092F1C000100000009 /* BabelViewFactory.swift */,
+				B3F1A00A2F1C00010000000A /* BabelMessageTranslationFooterView.swift */,
+				B3F1A00B2F1C00010000000B /* BabelComposerInputView.swift */,
+				B3F1A00E2F1C00010000000E /* LanguageSelectionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B3F1A0202F1C000100000006 /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				B3F1A0012F1C000100000001 /* AIService.swift */,
+				B3F1A0022F1C000100000002 /* LanguageDetector.swift */,
+				B3F1A0032F1C000100000003 /* TranslationStore.swift */,
+			);
+			path = AI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -247,27 +247,27 @@
 		A6F0C9072C1F7D6D00AFCB1D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
-		files = (
-			A6F0C9122C1F7D8400AFCB1D /* AppViewModel.swift in Sources */,
-			A6F0C9112C1F7D8400AFCB1D /* ContentView.swift in Sources */,
-			A6F0C9492C1F91BB00AFCB1D /* ChannelCreationView.swift in Sources */,
-			A6F0C9102C1F7D8400AFCB1D /* BabelApp.swift in Sources */,
-			A6F0C9152C1F7D8400AFCB1D /* AppConfig.swift in Sources */,
-			A6F0C9482C1F91BB00AFCB1D /* ProfileView.swift in Sources */,
-			A6F0C94D2C1FA1E900AFCB1D /* PushTokenService.swift in Sources */,
-			A6F0C94F2C1FA25700AFCB1D /* PushNotificationManager.swift in Sources */,
-			A6F0C9132C1F7D8400AFCB1D /* TokenService.swift in Sources */,
-			A6F0C9142C1F7D8400AFCB1D /* KeychainService.swift in Sources */,
-			B3F1A0112F1C000100000001 /* AIService.swift in Sources */,
-			B3F1A0122F1C000100000002 /* LanguageDetector.swift in Sources */,
-			B3F1A0132F1C000100000003 /* TranslationStore.swift in Sources */,
-			B3F1A0192F1C000100000009 /* BabelViewFactory.swift in Sources */,
-			B3F1A01A2F1C00010000000A /* BabelMessageTranslationFooterView.swift in Sources */,
-			B3F1A01B2F1C00010000000B /* BabelComposerInputView.swift in Sources */,
-			B3F1A01C2F1C00010000000C /* LanguageSettings.swift in Sources */,
-			B3F1A01D2F1C00010000000D /* LanguageService.swift in Sources */,
-			B3F1A01E2F1C00010000000E /* LanguageSelectionView.swift in Sources */,
-		);
+			files = (
+				A6F0C9122C1F7D8400AFCB1D /* AppViewModel.swift in Sources */,
+				A6F0C9112C1F7D8400AFCB1D /* ContentView.swift in Sources */,
+				A6F0C9492C1F91BB00AFCB1D /* ChannelCreationView.swift in Sources */,
+				A6F0C9102C1F7D8400AFCB1D /* BabelApp.swift in Sources */,
+				A6F0C9152C1F7D8400AFCB1D /* AppConfig.swift in Sources */,
+				A6F0C9482C1F91BB00AFCB1D /* ProfileView.swift in Sources */,
+				A6F0C94D2C1FA1E900AFCB1D /* PushTokenService.swift in Sources */,
+				A6F0C94F2C1FA25700AFCB1D /* PushNotificationManager.swift in Sources */,
+				A6F0C9132C1F7D8400AFCB1D /* TokenService.swift in Sources */,
+				A6F0C9142C1F7D8400AFCB1D /* KeychainService.swift in Sources */,
+				B3F1A0112F1C000100000001 /* AIService.swift in Sources */,
+				B3F1A0122F1C000100000002 /* LanguageDetector.swift in Sources */,
+				B3F1A0132F1C000100000003 /* TranslationStore.swift in Sources */,
+				B3F1A0192F1C000100000009 /* BabelViewFactory.swift in Sources */,
+				B3F1A01A2F1C00010000000A /* BabelMessageTranslationFooterView.swift in Sources */,
+				B3F1A01B2F1C00010000000B /* BabelComposerInputView.swift in Sources */,
+				B3F1A01C2F1C00010000000C /* LanguageSettings.swift in Sources */,
+				B3F1A01D2F1C00010000000D /* LanguageService.swift in Sources */,
+				B3F1A01E2F1C00010000000E /* LanguageSelectionView.swift in Sources */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
@@ -403,7 +403,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Babel/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Babel;
+				INFOPLIST_KEY_CFBundleDisplayName = "Babel - Talk to anyone!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -436,7 +436,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Babel/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Babel;
+				INFOPLIST_KEY_CFBundleDisplayName = "Babel - Talk to anyone!";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
