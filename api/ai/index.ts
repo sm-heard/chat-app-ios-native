@@ -248,19 +248,26 @@ async function handleSmartReplies(raw: SmartRepliesPayload) {
     throw new HttpError("messages array cannot be empty", 400);
   }
 
+  const latest = history[history.length - 1];
+
   const response = await client!.responses.create({
     model: MODEL,
-    temperature: 0.6,
+    temperature: 0.4,
     input: [
       {
         role: "system",
         content:
-          "Generate up to three concise reply suggestions in the user's language. Mirror their tone and reference the conversation when helpful. Return JSON { suggestions: string[] }. Each suggestion should be short and send-ready. Respond with a single JSON object only.",
+          "You generate thoughtful reply suggestions for a chat user. Each suggestion must sound like a natural continuation of the conversation and should directly address the most recent message. Lean on prior turns for context, reference specific details (names, plans, questions), and avoid bland small talk. Offer up to three varied options that are concise and ready to send. Return only JSON shaped as {\"suggestions\": [string...]}.",
       },
       {
         role: "user",
         content: JSON.stringify({
           target_language: target,
+          latest_message: {
+            speaker: latest.role,
+            text: latest.text,
+            language: latest.lang,
+          },
           history: history.map((message) => ({
             speaker: message.role,
             text: message.text,
