@@ -35,7 +35,7 @@
 
 /* Begin PBXFileReference section */
 		7063F15B2EAB404600AB64D1 /* Babel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Babel.entitlements; sourceTree = "<group>"; };
-		A6F0C9052C1F7D6D00AFCB1D /* Babel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Babel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6F0C9052C1F7D6D00AFCB1D /* BabelChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabelChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6F0C9202C1F7E1000AFCB1D /* BabelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabelApp.swift; sourceTree = "<group>"; };
 		A6F0C9212C1F7E1000AFCB1D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A6F0C9222C1F7E1000AFCB1D /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 		A6F0C9352C1F7F0C00AFCB1D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A6F0C9052C1F7D6D00AFCB1D /* Babel.app */,
+				A6F0C9052C1F7D6D00AFCB1D /* BabelChat.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -190,7 +190,7 @@
 				707AF9A22EAAE76F00E32AF0 /* StreamChatSwiftUI */,
 			);
 			productName = Babel;
-			productReference = A6F0C9052C1F7D6D00AFCB1D /* Babel.app */;
+			productReference = A6F0C9052C1F7D6D00AFCB1D /* BabelChat.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -403,7 +403,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Babel/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Babel - Talk to anyone!";
+				INFOPLIST_KEY_CFBundleDisplayName = Babel;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -415,7 +415,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.smheard.chat-app-ios-native";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BabelChat;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -436,7 +436,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Babel/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Babel - Talk to anyone!";
+				INFOPLIST_KEY_CFBundleDisplayName = Babel;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -448,7 +448,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.smheard.chat-app-ios-native";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = BabelChat;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
